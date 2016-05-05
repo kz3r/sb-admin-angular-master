@@ -87,7 +87,7 @@ angular
               'scripts/directives/timeline/timeline.js',
               'scripts/directives/notifications/notifications.js',
               'scripts/directives/chat/chat.js',
-              'scripts/directives/dashboard/stats/stats.js'
+              'scripts/directives/dashboard/stats/stats.js',
               ]
             })
           }
@@ -127,8 +127,45 @@ angular
     })
       .state('dashboard.novo_usuario',{
         templateUrl:'views/usuarios/novo_usuario.html',
-        url:'/novo_usuario'
-    })
+        url:'/novo_usuario',
+        controller:'RegistroController',
+        controllerAs:'vm',
+        resolve: {
+          loadMyDirectives:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name: 'sbAdminApp',
+                    files: [
+                      'scripts/genservicos.js',
+                      'scripts/controllers/gencontrollers.js'
+                    ]
+                }),
+                $ocLazyLoad.load(
+                {
+                  name:'ngCookies',
+                  files:['bower_components/angular-cookies/angular-cookies.js']
+                })
+              }
+          /*
+          loadMyDirectives:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                  name:'ngCookies',
+                  files:['bower_components/angular-cookies/angular-cookies.js']
+                }),
+          }, //Nao pode terminar aqui. Faz outro [resolve]? 
+          loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+              return $ocLazyLoad.load({
+              name: 'sbAdminApp',
+              files: [
+                'scripts/genservicos.js',
+                'scripts/controllers/gencontrollers.js'
+              ]
+            });
+          }]
+        */
+        }
+      })
       .state('dashboard.table',{
         templateUrl:'views/table.html',
         url:'/table'
