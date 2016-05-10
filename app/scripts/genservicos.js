@@ -18,7 +18,7 @@
 		return Autenticacao;
 
 		function registro(email, password, nome){
-			return $http.post('127.0.0.1:8000/genseq_api/usuarios',{
+			return $http.post('http://127.0.0.1:8000/genseq_api/usuarios/',{
 				email: email,
 				password: password,
 				nome: nome
