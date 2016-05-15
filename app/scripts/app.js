@@ -166,6 +166,29 @@ angular
         */
         }
       })
+	.state('dashboard.cadastrar_servico',{
+        templateUrl:'views/servicos/cadastrar_servico.html',
+        url:'/cadastrar_servico',
+        controller:'ServicoController',
+        controllerAs:'vm',
+        resolve: {
+          loadMyDirectives:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name: 'sbAdminApp',
+                    files: [
+                      'scripts/genservicos.js',
+                      'scripts/controllers/gencontrollers.js'
+                    ]
+                }),
+                $ocLazyLoad.load(
+                {
+                  name:'ngCookies',
+                  files:['bower_components/angular-cookies/angular-cookies.js']
+                })
+              }
+        }
+      })
       .state('dashboard.table',{
         templateUrl:'views/table.html',
         url:'/table'

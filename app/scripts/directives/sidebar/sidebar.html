@@ -8,6 +8,15 @@
             <li ui-sref-active="active">
                 <a ui-sref="dashboard.novo_usuario"><i class="fa fa-user fa-fw"></i> Novo Usuário</a>
             </li>
+			<li ng-class="{active: collapseVar==1}">{{dropDown}}
+                <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Cadastro<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=1">
+					<li ui-sref-active="active">
+						<a ui-sref="dashboard.cadastrar_servico"><i class="fa fa-gear fa-fw"></i> Novo Serviço</a>
+					</li>
+				</ul>
+			</li>
             <li ui-sref-active="active">
 
                 <a ui-sref="dashboard.chart"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span></span></a>
