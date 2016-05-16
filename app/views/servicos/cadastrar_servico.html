@@ -24,13 +24,12 @@
                         </form>
                     </div>
                     <!-- /.col-lg-6 (nested) -->
-                    <div class="col-lg-6">
-						<ul class="list-unstyled>
+                    <div class="col-lg-6 ">
+						<ul>
 							<label>Serviços Existentes</label>
-							<li class="list-group-item col-lg-12">
-							<blockquote ng-repeat="registro in vm.lista_servicos">
-							<b> {{registro.descricao}}</b>
-							 <button type="button" class="btn btn-danger pull-right" ng-model="vm.descricao" ng-click="vm.destroy()">Excluir</button>
+							<li class="list-group-item col-lg-12" ng-repeat="registro in vm.lista_servicos">
+							{{registro.descricao}}
+							 <button type="button" class="btn btn-danger pull-right btn-xs" ng-model="vm.descricao" ng-click="vm.destroy()">Excluir</button>
 							</li>
 						</ul>
                     </div>

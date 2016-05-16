@@ -36,7 +36,6 @@
 			
 			function servicosSuccessFn(data, status, headers, config) {
 				vm.lista_servicos.unshift({
-				id: 0,
 				descricao: vm.descricao 
 			});
 			  }
@@ -50,7 +49,7 @@
 		  Servico.destroy(vm.descricao).then(delservicosSuccessFn, delservicosErrorFn);
 
 		  function delservicosSuccessFn(data, status, headers, config) {
-
+			activate();
 		  }
 
 		  function delservicosErrorFn(data, status, headers, config) {

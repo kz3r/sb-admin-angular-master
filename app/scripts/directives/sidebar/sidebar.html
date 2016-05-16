@@ -9,11 +9,20 @@
                 <a ui-sref="dashboard.novo_usuario"><i class="fa fa-user fa-fw"></i> Novo Usuário</a>
             </li>
 			<li ng-class="{active: collapseVar==1}">{{dropDown}}
-                <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Cadastro<span
+                <a href="" ng-click="check(5)"><i class="fa fa-wrench fa-fw"></i> Cadastro<span
                         class="fa arrow"></span></a>
-                <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                <ul class="nav nav-second-level" collapse="collapseVar!=5">
 					<li ui-sref-active="active">
 						<a ui-sref="dashboard.cadastrar_servico"><i class="fa fa-gear fa-fw"></i> Novo Serviço</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboard.cadastrar_sistema"><i class="fa fa-desktop fa-fw"></i> Novo Sistema</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboard.cadastrar_kit_deplecao"><i class="fa fa-search fa-fw"></i> Novo Kit Depleção</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboard.cadastrar_status_amostra"><i class="fa fa-tag fa-fw"></i> Novo Status Amostra</a>
 					</li>
 				</ul>
 			</li>
