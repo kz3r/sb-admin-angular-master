@@ -54,5 +54,67 @@
 		
 		function destroy(descricao) {
 			return $http.delete('http://127.0.0.1:8000/genseq_api/servicos/' + descricao + '/');
-    }
+		}
+	}
+	
+	angular
+		.module('sbAdminApp')
+		.factory('Sistema', Sistema);
+
+	Sistema.$inject = ['$cookies', '$http'];
+
+	function Sistema($cookies,$http) {
+
+		var Sistema = {
+			submit: submit,
+			listar_sistemas : listar_sistemas,
+			destroy: destroy
+		};
+
+		return Sistema;
+
+		function submit(descricao){
+			return $http.post('http://127.0.0.1:8000/genseq_api/sistemas/',{
+				descricao: descricao
+			});
+		}
+		
+		function listar_sistemas(){
+			return $http.get('http://127.0.0.1:8000/genseq_api/sistemas/');
+		}
+		
+		function destroy(descricao) {
+			return $http.delete('http://127.0.0.1:8000/genseq_api/sistemas/' + descricao + '/');
+		}
+	}
+	
+	angular
+		.module('sbAdminApp')
+		.factory('KitDeplecao', KitDeplecao);
+
+	KitDeplecao.$inject = ['$cookies', '$http'];
+
+	function KitDeplecao($cookies,$http) {
+
+		var KitDeplecao = {
+			submit: submit,
+			listar_kitdeplecao : listar_kitdeplecao,
+			destroy: destroy
+		};
+
+		return KitDeplecao;
+
+		function submit(descricao){
+			return $http.post('http://127.0.0.1:8000/genseq_api/kit_deplecao/',{
+				descricao: descricao
+			});
+		}
+		
+		function listar_kitdeplecao(){
+			return $http.get('http://127.0.0.1:8000/genseq_api/kit_deplecao/');
+		}
+		
+		function destroy(descricao) {
+			return $http.delete('http://127.0.0.1:8000/genseq_api/kit_deplecao/' + descricao + '/');
+		}
 	}

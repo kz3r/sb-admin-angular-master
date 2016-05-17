@@ -69,3 +69,108 @@
 			 
 		}
 	}
+	
+	
+	angular.module('sbAdminApp')
+		.controller('SistemaController', SistemaController);
+
+	SistemaController.$inject = ['$rootScope', '$scope', 'Sistema'];
+
+	function SistemaController($rootScope, $scope, Sistema){
+		var vm = this;
+
+		vm.submit = submit;
+		vm.destroy = destroy;
+		vm.lista_sistemas=[];
+		activate();
+		
+		function submit() {
+
+			Sistema.submit(vm.descricao).then(sistemasSuccessFn, sistemasErrorFn);
+			
+			function sistemasSuccessFn(data, status, headers, config) {
+				vm.lista_sistemas.unshift({
+				descricao: vm.descricao 
+			});
+			  }
+
+			  function sistemasErrorFn(data, status, headers, config) {
+				$rootScope.$broadcast('sistema.created.error');
+			  }
+		}
+		function destroy() {
+		  Sistema.destroy(vm.descricao).then(delsistemasSuccessFn, delservicosErrorFn);
+
+		  function delsistemasSuccessFn(data, status, headers, config) {
+			activate();
+		  }
+
+		  function delsistemasErrorFn(data, status, headers, config) {
+
+		  }
+		}
+		function activate() {
+			Sistema.listar_sistemas().then(sistemasSuccessFn, sistemasErrorFn);
+
+			  function sistemasSuccessFn(data, status, headers, config) {
+				vm.lista_sistemas = data.data;
+			  }
+
+			  function sistemasErrorFn(data, status, headers, config) {
+				$rootScope.$broadcast('sistema.created.error');
+			  }
+			 
+		}
+	}
+	
+	angular.module('sbAdminApp')
+		.controller('KitDeplecaoController', KitDeplecaoController);
+
+	KitDeplecaoController.$inject = ['$rootScope', '$scope', 'KitDeplecao'];
+
+	function KitDeplecaoController($rootScope, $scope, KitDeplecao){
+		var vm = this;
+
+		vm.submit = submit;
+		vm.destroy = destroy;
+		vm.lista_kitdeplecao=[];
+		activate();
+		
+		function submit() {
+
+			KitDeplecao.submit(vm.descricao).then(kitdeplecaoSuccessFn, kitdeplecaoErrorFn);
+			
+			function kitdeplecaoSuccessFn(data, status, headers, config) {
+				vm.lista_kitdeplecao.unshift({
+				descricao: vm.descricao 
+			});
+			  }
+
+			  function kitdeplecaoErrorFn(data, status, headers, config) {
+				$rootScope.$broadcast('kitdeplecao.created.error');
+			  }
+		}
+		function destroy() {
+		  KitDeplecao.destroy(vm.descricao).then(delkitdeplecaoSuccessFn, delkitdeplecaoErrorFn);
+
+		  function delkitdeplecaoSuccessFn(data, status, headers, config) {
+			activate();
+		  }
+
+		  function delkitdeplecaoErrorFn(data, status, headers, config) {
+
+		  }
+		}
+		function activate() {
+			KitDeplecao.listar_kitdeplecao().then(kitdeplecaoSuccessFn, kitdeplecaoErrorFn);
+
+			  function kitdeplecaoSuccessFn(data, status, headers, config) {
+				vm.lista_kitdeplecao = data.data;
+			  }
+
+			  function kitdeplecaoErrorFn(data, status, headers, config) {
+				$rootScope.$broadcast('kitdeplecao.created.error');
+			  }
+			 
+		}
+	}
