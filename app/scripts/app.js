@@ -186,6 +186,11 @@ angular
                   name:'ngCookies',
                   files:['bower_components/angular-cookies/angular-cookies.js']
                 })
+				 $ocLazyLoad.load(
+                {
+                  name:'ngSnackbar',
+                  files:['node_modules/node-snackbar/dist/snackbar.js']
+                })
               }
         }
       })
@@ -216,6 +221,29 @@ angular
         templateUrl:'views/kit_deplecao/kit_deplecao.html',
         url:'/kit_deplecao',
         controller:'KitDeplecaoController',
+        controllerAs:'vm',
+        resolve: {
+          loadMyDirectives:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name: 'sbAdminApp',
+                    files: [
+                      'scripts/genservicos.js',
+                      'scripts/controllers/gencontrollers.js'
+                    ]
+                }),
+                $ocLazyLoad.load(
+                {
+                  name:'ngCookies',
+                  files:['bower_components/angular-cookies/angular-cookies.js']
+                })
+              }
+        }
+      })
+	  .state('dashboard.projetos',{
+        templateUrl:'views/projeto/projetos.html',
+        url:'/projetos',
+        controller:'ProjetoController',
         controllerAs:'vm',
         resolve: {
           loadMyDirectives:function($ocLazyLoad){

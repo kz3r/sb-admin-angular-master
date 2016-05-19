@@ -19,10 +19,10 @@
 	angular.module('sbAdminApp')
 		.controller('ServicoController', ServicoController);
 
-	ServicoController.$inject = ['$rootScope', '$scope', 'Servico'];
+	ServicoController.$inject = [ '$rootScope', '$scope', 'Servico'];
 
 
-	function ServicoController($rootScope, $scope, Servico){
+	function ServicoController( $rootScope, $scope, Servico){
 		var vm = this;
 
 		vm.submit = submit;
@@ -37,18 +37,19 @@
 			function servicosSuccessFn(data, status, headers, config) {
 				vm.lista_servicos.unshift({
 				descricao: vm.descricao 
-			});
-			  }
-
-			  function servicosErrorFn(data, status, headers, config) {
+				});
+				Snackbar.show({ actionText: 'Thanks!'});	
+			}
+			function servicosErrorFn(data, status, headers, config) {
 				$rootScope.$broadcast('servico.created.error');
 				vm.lista_servicos.shift();
-			  }
+			}
 		}
 		function destroy() {
 		  Servico.destroy(vm.descricao).then(delservicosSuccessFn, delservicosErrorFn);
 
 		  function delservicosSuccessFn(data, status, headers, config) {
+			  
 			activate();
 		  }
 
@@ -170,6 +171,59 @@
 
 			  function kitdeplecaoErrorFn(data, status, headers, config) {
 				$rootScope.$broadcast('kitdeplecao.created.error');
+			  }
+			 
+		}
+	}
+	
+	
+	angular.module('sbAdminApp')
+		.controller('ProjetoController', ProjetoController);
+
+	ProjetoController.$inject = ['$rootScope', '$scope', 'Projeto'];
+
+	function ProjetoController($rootScope, $scope, Projeto){
+		var vm = this;
+
+		vm.submit = submit;
+		vm.destroy = destroy;
+		vm.lista_projetos=[];
+		activate();
+		
+		function submit() {
+
+			Projeto.submit(vm.descricao).then(projetoSuccessFn, projetoErrorFn);
+			
+			function projetoSuccessFn(data, status, headers, config) {
+				vm.lista_projetos.unshift({
+				descricao: vm.descricao 
+			});
+			  }
+
+			  function projetoErrorFn(data, status, headers, config) {
+				$rootScope.$broadcast('projeto.created.error');
+			  }
+		}
+		function destroy() {
+		  Projeto.destroy(vm.descricao).then(delprojetoSuccessFn, delprojetoErrorFn);
+
+		  function delprojetoSuccessFn(data, status, headers, config) {
+			activate();
+		  }
+
+		  function delprojetoErrorFn(data, status, headers, config) {
+
+		  }
+		}
+		function activate() {
+			Projeto.listar_projetos().then(projetoSuccessFn, projetoErrorFn);
+
+			  function projetoSuccessFn(data, status, headers, config) {
+				vm.lista_projetos = data.data;
+			  }
+
+			  function projetoErrorFn(data, status, headers, config) {
+				$rootScope.$broadcast('projeto.created.error');
 			  }
 			 
 		}
