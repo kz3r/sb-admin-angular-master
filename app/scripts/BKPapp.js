@@ -36,7 +36,7 @@ angular
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
                     'scripts/directives/sidebar/sidebar.js',
-                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js'                    
                     ]
                 }),
                 $ocLazyLoad.load(
@@ -189,103 +189,6 @@ angular
             });
           }]
         */
-        }
-      })
-	.state('dashboard.servicos',{
-        templateUrl:'views/servico/servicos.html',
-        url:'/servicos',
-        controller:'ServicoController',
-        controllerAs:'vm',
-        resolve: {
-          loadMyDirectives:function($ocLazyLoad){
-                return $ocLazyLoad.load(
-                {
-                    name: 'sbAdminApp',
-                    files: [
-                      'scripts/genservicos.js',
-                      'scripts/controllers/gencontrollers.js'
-                    ]
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngCookies',
-                  files:['bower_components/angular-cookies/angular-cookies.js']
-                })
-				 $ocLazyLoad.load(
-                {
-                  name:'ngSnackbar',
-                  files:['node_modules/node-snackbar/dist/snackbar.js']
-                })
-              }
-        }
-      })
-	.state('dashboard.sistemas',{
-        templateUrl:'views/sistema/sistemas.html',
-        url:'/sistemas',
-        controller:'SistemaController',
-        controllerAs:'vm',
-        resolve: {
-          loadMyDirectives:function($ocLazyLoad){
-                return $ocLazyLoad.load(
-                {
-                    name: 'sbAdminApp',
-                    files: [
-                      'scripts/genservicos.js',
-                      'scripts/controllers/gencontrollers.js'
-                    ]
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngCookies',
-                  files:['bower_components/angular-cookies/angular-cookies.js']
-                })
-              }
-        }
-      })
-	.state('dashboard.kit_deplecao',{
-        templateUrl:'views/kit_deplecao/kit_deplecao.html',
-        url:'/kit_deplecao',
-        controller:'KitDeplecaoController',
-        controllerAs:'vm',
-        resolve: {
-          loadMyDirectives:function($ocLazyLoad){
-                return $ocLazyLoad.load(
-                {
-                    name: 'sbAdminApp',
-                    files: [
-                      'scripts/genservicos.js',
-                      'scripts/controllers/gencontrollers.js'
-                    ]
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngCookies',
-                  files:['bower_components/angular-cookies/angular-cookies.js']
-                })
-              }
-        }
-      })
-	  .state('dashboard.projetos',{
-        templateUrl:'views/projeto/projetos.html',
-        url:'/projetos',
-        controller:'ProjetoController',
-        controllerAs:'vm',
-        resolve: {
-          loadMyDirectives:function($ocLazyLoad){
-                return $ocLazyLoad.load(
-                {
-                    name: 'sbAdminApp',
-                    files: [
-                      'scripts/genservicos.js',
-                      'scripts/controllers/gencontrollers.js'
-                    ]
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngCookies',
-                  files:['bower_components/angular-cookies/angular-cookies.js']
-                })
-              }
         }
       })
       .state('dashboard.table',{

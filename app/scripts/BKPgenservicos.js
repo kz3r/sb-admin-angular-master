@@ -8,9 +8,8 @@
 	
 	var GENSEQ_API_Server = 'http://127.0.0.1:8000/genseq_api/';
 
-
 	function Autenticacao($cookies,$http) {
-		
+	
 		var Autenticacao = {
 			registro: registro,
 			login: login,
@@ -91,98 +90,5 @@
 
 		function unauthenticate() {
 			delete $cookies.authenticatedUser;
-		}
-	}
-	
-	angular
-		.module('sbAdminApp')
-		.factory('Servico', Servico);
-
-	Servico.$inject = ['$cookies', '$http'];
-
-	function Servico($cookies,$http) {
-
-		var Servico = {
-			submit: submit,
-			listar_servicos : listar_servicos,
-			destroy: destroy
-		};
-
-		return Servico;
-
-		function submit(descricao){
-			return $http.post('http://127.0.0.1:8000/genseq_api/servicos/',{
-				descricao: descricao
-			});
-		}
-		
-		function listar_servicos(){
-			return $http.get('http://127.0.0.1:8000/genseq_api/servicos/');
-		}
-		
-		function destroy(descricao) {
-			return $http.delete('http://127.0.0.1:8000/genseq_api/servicos/' + descricao + '/');
-		}
-	}
-	
-	angular
-		.module('sbAdminApp')
-		.factory('Sistema', Sistema);
-
-	Sistema.$inject = ['$cookies', '$http'];
-
-	function Sistema($cookies,$http) {
-
-		var Sistema = {
-			submit: submit,
-			listar_sistemas : listar_sistemas,
-			destroy: destroy
-		};
-
-		return Sistema;
-
-		function submit(descricao){
-			return $http.post('http://127.0.0.1:8000/genseq_api/sistemas/',{
-				descricao: descricao
-			});
-		}
-		
-		function listar_sistemas(){
-			return $http.get('http://127.0.0.1:8000/genseq_api/sistemas/');
-		}
-		
-		function destroy(descricao) {
-			return $http.delete('http://127.0.0.1:8000/genseq_api/sistemas/' + descricao + '/');
-		}
-	}
-	
-	angular
-		.module('sbAdminApp')
-		.factory('KitDeplecao', KitDeplecao);
-
-	KitDeplecao.$inject = ['$cookies', '$http'];
-
-	function KitDeplecao($cookies,$http) {
-
-		var KitDeplecao = {
-			submit: submit,
-			listar_kitdeplecao : listar_kitdeplecao,
-			destroy: destroy
-		};
-
-		return KitDeplecao;
-
-		function submit(descricao){
-			return $http.post('http://127.0.0.1:8000/genseq_api/kit_deplecao/',{
-				descricao: descricao
-			});
-		}
-		
-		function listar_kitdeplecao(){
-			return $http.get('http://127.0.0.1:8000/genseq_api/kit_deplecao/');
-		}
-		
-		function destroy(descricao) {
-			return $http.delete('http://127.0.0.1:8000/genseq_api/kit_deplecao/' + descricao + '/');
 		}
 	}
