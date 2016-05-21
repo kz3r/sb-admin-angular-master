@@ -84,6 +84,7 @@ angular
               name:'sbAdminApp',
               files:[
               'scripts/genservicos.js',
+              'scripts/controllers/gencontrollers.js',
               'scripts/controllers/main.js',
               'scripts/directives/timeline/timeline.js',
               'scripts/directives/notifications/notifications.js',
