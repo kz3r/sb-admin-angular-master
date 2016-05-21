@@ -31,7 +31,7 @@
 								<ul class="list-group" ng-repeat="registro in vm.lista_kitdeplecao">
 									<li class="list-group-item col-lg-12">
 									{{registro.descricao}}
-										<button type="button" class="btn btn-danger pull-right btn-xs " ng-model="vm.descricao" ng-click="vm.destroy()">Excluir</button>
+										<button type="button" class="btn btn-danger pull-right btn-xs " ng-click="vm.destroy($index)">Excluir</button>
 									</li>
 								</ul>
 							</div>

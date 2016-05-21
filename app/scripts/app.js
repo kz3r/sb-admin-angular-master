@@ -204,18 +204,13 @@ angular
                     name: 'sbAdminApp',
                     files: [
                       'scripts/genservicos.js',
-                      'scripts/controllers/gencontrollers.js'
+                      'scripts/controllers/gencontrollers.js',
                     ]
                 }),
                 $ocLazyLoad.load(
                 {
                   name:'ngCookies',
                   files:['bower_components/angular-cookies/angular-cookies.js']
-                })
-				 $ocLazyLoad.load(
-                {
-                  name:'ngSnackbar',
-                  files:['node_modules/node-snackbar/dist/snackbar.js']
                 })
               }
         }
