@@ -67,17 +67,31 @@
 			</div>
 			<div class="modal-body">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						vlalvlalaslasad
-						<button class="btn btn-success btn-lg pull-right btn-sm" type="button" data-toggle="modal" data-target="#PickInstituicaoModal">
-							<i class="fa fa-plus"></i> Adicionar Instituicao
-						</button>
-					</div>
 					<div class="panel-body">
-						<button class="btn btn-success btn pull-right btn-sm btn-escolher" data-dismiss="modal" type="button">
-							<i class="fa fa-check" ></i> Adicionar
-						</button>
+						<form role="form" ng-submit="vm.submit()">
+							<div class="form-group"> 
+                                <label>Nome do Projeto</label>
+								<input type="text" class="form-control" id="projeto__nome" placeholder="Nome " ng-model="vm.nome">
+							</div>
+							<div class="form-group">
+								<label>Descrição do Projeto</label>
+								<input type="text" class="form-control" id="projeto__descricao" placeholder="Descricao " ng-model="vm.descricao">
+							</div>
+							<div class="form-group">
+								<label>Instituição</label>
+								<input type="text" class="form-control" id="projeto__instituicao" ng-model="vm.instituicao" disabled>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-lg pull-right btn-sm" type="button" data-toggle="modal" data-target="#PickInstituicaoModal">
+									<i class="fa fa-plus"></i> Escolher Instituicao
+								</button>
+							</div>
+		
+							<button type="submit" class="btn btn-default" data-dismiss="modal">Cadastrar</button>
+							<button type="reset" class="btn btn-default">Limpar</button>
+						</form>
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -100,7 +114,7 @@
 						<div class="panel-heading">
 						<form role="form" ng-submit="vm.add_instituicao()">
 						<label>Nome <input type="text" ng-model="vm.filtro_instituicao" /></label> 
-						<button class="btn btn-success btn-sm pull-right" type="submit">
+						<button class="btn btn-default btn-sm pull-right" type="submit">
 							<i class="fa fa-plus"></i> Adicionar
 						</button>
 						</div>
@@ -109,8 +123,8 @@
 					<div class="panel-body">
 						<ul class="list-group" ng-repeat="registro in vm.lista_instituicoes | filter:vm.filtro_instituicao">
 							<li class="list-group-item">
-								{{registro.nome}}
-								<button class="btn btn-success btn pull-right btn-sm btn-escolher" data-dismiss="modal" type="button">
+								{{registro}}
+								<button class="btn btn-success btn pull-right btn-sm btn-escolher" data-dismiss="modal" type="button" ng-click="vm.pick_instituicao($index)">
 									<i class="fa fa-check" ></i> Escolher
 								</button>
 							</li>

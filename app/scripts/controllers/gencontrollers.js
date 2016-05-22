@@ -51,10 +51,10 @@
 				descricao: vm.descricao 
 				});
 				vm.descricao = [];
-				SnackBar.show({ pos: 'bottom-center', text: 'Serviço adicionado com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});	
+				SnackBar.show({ pos: 'bottom-center', text: 'Serviço adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});	
 			}
 			function servicosErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Serviço não pode ser adicionado!', actionText: 'Dismiss', actionTextColor: '#FF0000'});	
+				SnackBar.show({ pos: 'bottom-center', text: 'Serviço não pode ser adicionado!', actionText: 'Ocultar', actionTextColor: '#FF0000'});	
 			}
 		}
 		function destroy(id) {
@@ -62,11 +62,11 @@
 
 		  function delservicosSuccessFn(data, status, headers, config) {
 			activate();
-			SnackBar.show({ pos: 'bottom-center', text: 'Serviço excluido com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+			SnackBar.show({ pos: 'bottom-center', text: 'Serviço excluido com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 		  }
 
 		  function delservicosErrorFn(data, status, headers, config) {
-			SnackBar.show({ pos: 'bottom-center', text: 'Serviço não pode ser excluido!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+			SnackBar.show({ pos: 'bottom-center', text: 'Serviço não pode ser excluido!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 		  }
 		}
 		function activate() {
@@ -77,7 +77,7 @@
 			  }
 
 			  function servicosErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar serviços!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar serviços!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 			 
 		}
@@ -106,11 +106,11 @@
 				descricao: vm.descricao 
 				});
 				vm.descricao = [];
-				SnackBar.show({ pos: 'bottom-center', text: 'Sistema adicionado com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Sistema adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 			  }
 
 			  function sistemasErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Sistema não pode ser adicionado!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Sistema não pode ser adicionado!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 		}
 		function destroy(id) {
@@ -118,11 +118,11 @@
 
 		  function delsistemasSuccessFn(data, status, headers, config) {
 			activate();
-			SnackBar.show({ pos: 'bottom-center', text: 'Sistema excluido com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+			SnackBar.show({ pos: 'bottom-center', text: 'Sistema excluido com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 		  }
 
 		  function delsistemasErrorFn(data, status, headers, config) {
-			SnackBar.show({ pos: 'bottom-center', text: 'Sistema não pode ser excluido!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+			SnackBar.show({ pos: 'bottom-center', text: 'Sistema não pode ser excluido!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 		  }
 		}
 		function activate() {
@@ -133,7 +133,7 @@
 			  }
 
 			  function sistemasErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar sistemas!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar sistemas!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 			 
 		}
@@ -161,11 +161,11 @@
 				descricao: vm.descricao 
 				});
 				vm.descricao = [];
-				SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção adicionado com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 			  }
 
 			  function kitdeplecaoErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção não pode ser adicionado!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção não pode ser adicionado!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 		}
 		function destroy(id) {
@@ -173,11 +173,11 @@
 
 		  function delkitdeplecaoSuccessFn(data, status, headers, config) {
 			activate();
-			SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção excluido com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+			SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção excluido com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 		  }
 
 		  function delkitdeplecaoErrorFn(data, status, headers, config) {
-			SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção não pode ser excluido!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+			SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção não pode ser excluido!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 		  }
 		}
 		function activate() {
@@ -188,7 +188,7 @@
 			  }
 
 			  function kitdeplecaoErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar kits de depleção!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar kits de depleção!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 			 
 		}
@@ -205,6 +205,7 @@
 		var vm = this;
 		
 		vm.add_instituicao = add_instituicao;
+		vm.pick_instituicao = pick_instituicao;
 		vm.lista_projetos=[];
 		vm.lista_instituicoes=[];
 		listar_instituicoes();
@@ -214,16 +215,18 @@
 			Instituicao.submit(vm.filtro_instituicao).then(instituicaoSuccessFn, instituicaoprojetoErrorFn);
 			
 			function instituicaoSuccessFn(data, status, headers, config) {
-				vm.lista_projetos.unshift({
-				nome: vm.filtro_instituicao 
-				});
-				SnackBar.show({ pos: 'bottom-center', text: 'Instituição adicionada com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
 				listar_instituicoes();
+				SnackBar.show({ pos: 'bottom-center', text: 'Instituição adicionada com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
+				
 			  }
 
 			  function instituicaoprojetoErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Instituição não pode ser adicionado!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Instituição não pode ser adicionada!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
+		}
+		
+		function pick_instituicao(id){
+			vm.instituicao = vm.lista_instituicoes[id].nome;
 		}
 		
 		function listar_instituicoes() {
@@ -234,7 +237,7 @@
 			  }
 
 			  function instituicaoprojetoErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar Instituições!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar Instituições!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 			 
 		}
