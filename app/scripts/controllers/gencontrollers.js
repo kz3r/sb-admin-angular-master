@@ -193,58 +193,51 @@
 			 
 		}
 	}
-	
+
+		
 	
 	angular.module('sbAdminApp')
 		.controller('ProjetoController', ProjetoController);
 
-	ProjetoController.$inject = ['$rootScope', '$scope', 'Projeto'];
+	ProjetoController.$inject = ['$rootScope', '$scope', 'Instituicao'];
 
-	function ProjetoController($rootScope, $scope, Projeto){
+	function ProjetoController($rootScope, $scope, Instituicao){
 		var vm = this;
-
-		vm.submit = submit;
-		vm.destroy = destroy;
-		vm.lista_projetos=[];
-		activate();
 		
-		function submit() {
-
-			Projeto.submit(vm.descricao).then(projetoSuccessFn, projetoErrorFn);
+		vm.add_instituicao = add_instituicao;
+		vm.lista_projetos=[];
+		vm.lista_instituicoes=[];
+		listar_instituicoes();
+		
+		function add_instituicao(){
 			
-			function projetoSuccessFn(data, status, headers, config) {
+			Instituicao.submit(vm.filtro_instituicao).then(instituicaoSuccessFn, instituicaoprojetoErrorFn);
+			
+			function instituicaoSuccessFn(data, status, headers, config) {
 				vm.lista_projetos.unshift({
-				descricao: vm.descricao 
+				nome: vm.filtro_instituicao 
 				});
-				SnackBar.show({ pos: 'bottom-center', text: 'Projeto adicionado com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+				SnackBar.show({ pos: 'bottom-center', text: 'Instituição adicionada com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
+				listar_instituicoes();
 			  }
 
-			  function projetoErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Projeto não pode ser adicionado!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+			  function instituicaoprojetoErrorFn(data, status, headers, config) {
+				SnackBar.show({ pos: 'bottom-center', text: 'Instituição não pode ser adicionado!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
 			  }
 		}
-		function destroy() {
-		  Projeto.destroy(descricao).then(delprojetoSuccessFn, delprojetoErrorFn);
+		
+		function listar_instituicoes() {
+			Instituicao.listar_instituicoes().then(instituicaoSuccessFn, instituicaoprojetoErrorFn);
 
-		  function delprojetoSuccessFn(data, status, headers, config) {
-			activate();
-			SnackBar.show({ pos: 'bottom-center', text: 'Projeto excluido com sucesso!', actionText: 'Dismiss', actionTextColor: '#00FF00'});
-		  }
-
-		  function delprojetoErrorFn(data, status, headers, config) {
-			SnackBar.show({ pos: 'bottom-center', text: 'Projeto não pode ser excluido!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
-		  }
-		}
-		function activate() {
-			Projeto.listar_projetos().then(projetoSuccessFn, projetoErrorFn);
-
-			  function projetoSuccessFn(data, status, headers, config) {
-				vm.lista_projetos = data.data;
+			  function instituicaoSuccessFn(data, status, headers, config) {
+				vm.lista_instituicoes = data.data;
 			  }
 
-			  function projetoErrorFn(data, status, headers, config) {
-				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar projetos!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
+			  function instituicaoprojetoErrorFn(data, status, headers, config) {
+				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar Instituições!', actionText: 'Dismiss', actionTextColor: '#FF0000'});
 			  }
 			 
 		}
+		
+		
 	}
