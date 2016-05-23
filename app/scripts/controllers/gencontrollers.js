@@ -199,16 +199,18 @@
 	angular.module('sbAdminApp')
 		.controller('ProjetoController', ProjetoController);
 
-	ProjetoController.$inject = ['$rootScope', '$scope', 'Instituicao'];
+	ProjetoController.$inject = ['$rootScope', '$scope', 'Instituicao', 'Projeto'];
 
-	function ProjetoController($rootScope, $scope, Instituicao){
+	function ProjetoController($rootScope, $scope, Instituicao, Projeto){
 		var vm = this;
 		
 		vm.add_instituicao = add_instituicao;
 		vm.pick_instituicao = pick_instituicao;
+		vm.submit = submit;
 		vm.lista_projetos=[];
 		vm.lista_instituicoes=[];
 		listar_instituicoes();
+		listar_projetos()
 		
 		function add_instituicao(){
 			
@@ -225,22 +227,50 @@
 			  }
 		}
 		
-		function pick_instituicao(id){
-			vm.instituicao = vm.lista_instituicoes[id].nome;
+		function pick_instituicao(registro){
+			vm.instituicao = registro.nome;
 		}
 		
 		function listar_instituicoes() {
-			Instituicao.listar_instituicoes().then(instituicaoSuccessFn, instituicaoprojetoErrorFn);
+			Instituicao.listar_instituicoes().then(instituicaoSuccessFn, instituicaoErrorFn);
 
 			  function instituicaoSuccessFn(data, status, headers, config) {
 				vm.lista_instituicoes = data.data;
 			  }
 
-			  function instituicaoprojetoErrorFn(data, status, headers, config) {
+			  function instituicaoErrorFn(data, status, headers, config) {
 				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar Instituições!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 			 
 		}
 		
+		function listar_projetos() {
+			Projeto.listar_projetos().then(projetoSuccessFn, projetoErrorFn);
+
+			  function projetoSuccessFn(data, status, headers, config) {
+				vm.lista_projetos = data.data;
+			  }
+
+			  function projetoErrorFn(data, status, headers, config) {
+				SnackBar.show({ pos: 'bottom-center', text: 'Erro ao carregar Projetos!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
+			  }
+			 
+		}
 		
+		function submit() {
+
+			Projeto.submit(vm.nome, vm.descricao, vm.instituicao).then(projetoSuccessFn, projetoErrorFn);
+			
+			function projetoSuccessFn(data, status, headers, config) {
+				vm.descricao = [];
+				vm.nome = [];
+				vm.instituicao = [];
+				
+				SnackBar.show({ pos: 'bottom-center', text: 'Projeto adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
+			  }
+
+			  function kitdeplecaoErrorFn(data, status, headers, config) {
+				SnackBar.show({ pos: 'bottom-center', text: 'Projeto não pode ser adicionado!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
+			  }
+		}
 	}

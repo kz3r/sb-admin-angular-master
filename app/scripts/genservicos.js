@@ -197,7 +197,7 @@
 
 		var Instituicao = {
 			submit: submit,
-			listar_instituicoes : listar_instituicoes,
+			listar_instituicoes: listar_instituicoes,
 			destroy: destroy
 		};
 
@@ -215,5 +215,38 @@
 		
 		function destroy(nome) {
 			return $http.delete('http://127.0.0.1:8000/genseq_api/instituicao/' + nome + '/');
+		}
+	}
+	
+	angular
+		.module('sbAdminApp')
+		.factory('Projeto', Projeto);
+
+	Projeto.$inject = ['$cookies', '$http'];
+
+	function Projeto($cookies,$http) {
+
+		var Projeto = {
+			submit: submit,
+			listar_projetos: listar_projetos,
+			destroy: destroy
+		};
+
+		return Projeto;
+
+		function submit(nome, descricao, instituicao){
+			return $http.post('http://127.0.0.1:8000/genseq_api/projeto/',{
+				nome: nome,
+				descricao: descricao,
+				instituicao: instituicao
+			});
+		}
+		
+		function listar_projetos(){
+			return $http.get('http://127.0.0.1:8000/genseq_api/projeto/');
+		}
+		
+		function destroy(nome) {
+			return $http.delete('http://127.0.0.1:8000/genseq_api/projeto/' + nome + '/');
 		}
 	}

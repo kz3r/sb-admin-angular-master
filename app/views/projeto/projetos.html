@@ -21,24 +21,12 @@
 								<th>Status</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody ng-repeat="registro in vm.lista_projetos">
 							<tr>
-								<td>1</td>
-								<td>Mark</td>
-								<td>Otto</td>
+								<td>{{registro.nome}}</td>
+								<td>{{registro.descricao}}</td>
+								<td>{{registro.instituicao}}</td>
 								<td>@mdo</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
 							</tr>
 						</tbody>
 					</table>
@@ -124,7 +112,7 @@
 						<ul class="list-group" ng-repeat="registro in vm.lista_instituicoes | filter:vm.filtro_instituicao">
 							<li class="list-group-item">
 								{{registro}}
-								<button class="btn btn-success btn pull-right btn-sm btn-escolher" data-dismiss="modal" type="button" ng-click="vm.pick_instituicao($index)">
+								<button class="btn btn-success btn pull-right btn-sm btn-escolher" data-dismiss="modal" type="button" ng-click="vm.pick_instituicao(registro)">
 									<i class="fa fa-check" ></i> Escolher
 								</button>
 							</li>
