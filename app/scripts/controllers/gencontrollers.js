@@ -228,7 +228,7 @@
 		}
 		
 		function pick_instituicao(registro){
-			vm.instituicao = registro.nome;
+			vm.instituicao = registro;
 		}
 		
 		function listar_instituicoes() {
@@ -259,7 +259,7 @@
 		
 		function submit() {
 
-			Projeto.submit(vm.nome, vm.descricao, vm.instituicao).then(projetoSuccessFn, projetoErrorFn);
+			Projeto.submit(vm.nome, vm.descricao, vm.instituicao.id).then(projetoSuccessFn, projetoErrorFn);
 			
 			function projetoSuccessFn(data, status, headers, config) {
 				vm.descricao = [];
@@ -267,9 +267,10 @@
 				vm.instituicao = [];
 				
 				SnackBar.show({ pos: 'bottom-center', text: 'Projeto adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
+				listar_projetos();
 			  }
 
-			  function kitdeplecaoErrorFn(data, status, headers, config) {
+			  function projetoErrorFn(data, status, headers, config) {
 				SnackBar.show({ pos: 'bottom-center', text: 'Projeto não pode ser adicionado!', actionText: 'Ocultar', actionTextColor: '#FF0000'});
 			  }
 		}

@@ -25,8 +25,9 @@
 							<tr>
 								<td>{{registro.nome}}</td>
 								<td>{{registro.descricao}}</td>
-								<td>{{registro.instituicao}}</td>
-								<td>@mdo</td>
+								<td>{{registro.instituicao.nome}}</td>
+								<td ng-if="registro.autorizado_em != null">Aprovado</td>
+								<td ng-if="registro.autorizado_em == null">Em aprovação</td>
 							</tr>
 						</tbody>
 					</table>
@@ -67,7 +68,7 @@
 							</div>
 							<div class="form-group">
 								<label>Instituição</label>
-								<input type="text" class="form-control" id="projeto__instituicao" ng-model="vm.instituicao" disabled>
+								<input type="text" class="form-control" id="projeto__instituicao" ng-model="vm.instituicao.nome" disabled>
 							</div>
 							<div class="form-group">
 								<button class="btn btn-lg pull-right btn-sm" type="button" data-toggle="modal" data-target="#PickInstituicaoModal">
@@ -75,7 +76,7 @@
 								</button>
 							</div>
 		
-							<button type="submit" class="btn btn-default" data-dismiss="modal">Cadastrar</button>
+							<button type="submit" class="btn btn-default" onclick="$('#AddProjetoModal').modal('hide')">Cadastrar</button>
 							<button type="reset" class="btn btn-default">Limpar</button>
 						</form>
 					</div>
@@ -111,7 +112,7 @@
 					<div class="panel-body">
 						<ul class="list-group" ng-repeat="registro in vm.lista_instituicoes | filter:vm.filtro_instituicao">
 							<li class="list-group-item">
-								{{registro}}
+								{{registro.nome}}
 								<button class="btn btn-success btn pull-right btn-sm btn-escolher" data-dismiss="modal" type="button" ng-click="vm.pick_instituicao(registro)">
 									<i class="fa fa-check" ></i> Escolher
 								</button>
