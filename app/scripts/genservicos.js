@@ -96,32 +96,20 @@
 	
 	angular
 		.module('sbAdminApp')
-		.factory('Servico', Servico);
+		.factory('Usuario', Usuario);
 
-	Servico.$inject = ['$cookies', '$http'];
+	Usuario.$inject = ['$cookies', '$http'];
 
-	function Servico($cookies,$http) {
+	function Usuario($cookies,$http) {
 
-		var Servico = {
-			submit: submit,
-			listar_servicos : listar_servicos,
-			destroy: destroy
+		var Usuario = {
+			listar_usuarios : listar_usuarios
 		};
 
-		return Servico;
-
-		function submit(descricao){
-			return $http.post('http://127.0.0.1:8000/genseq_api/servicos/',{
-				descricao: descricao
-			});
-		}
+		return Usuario;
 		
-		function listar_servicos(){
-			return $http.get('http://127.0.0.1:8000/genseq_api/servicos/');
-		}
-		
-		function destroy(descricao) {
-			return $http.delete('http://127.0.0.1:8000/genseq_api/servicos/' + descricao + '/');
+		function listar_usuarios(){
+			return $http.get('http://127.0.0.1:8000/genseq_api/usuarios/');
 		}
 	}
 	
@@ -234,11 +222,12 @@
 
 		return Projeto;
 
-		function submit(nome, descricao, instituicao){
+		function submit(nome, descricao, instituicao, membros){
 			return $http.post('http://127.0.0.1:8000/genseq_api/projeto/',{
 				nome: nome,
 				descricao: descricao,
-				instituicao: instituicao
+				instituicao: instituicao,
+				membros: membros
 			});
 		}
 		
