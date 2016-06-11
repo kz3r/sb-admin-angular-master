@@ -41,16 +41,13 @@
 		activate();
 		
 		
-		
 		function submit() {
 
 			Servico.submit(vm.descricao).then(servicosSuccessFn, servicosErrorFn);
 			
 			function servicosSuccessFn(data, status, headers, config) {
-				vm.lista_servicos.unshift({
-				descricao: vm.descricao 
-				});
 				vm.descricao = [];
+				activate();
 				SnackBar.show({ pos: 'bottom-center', text: 'Serviço adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});	
 			}
 			function servicosErrorFn(data, status, headers, config) {
@@ -58,7 +55,7 @@
 			}
 		}
 		function destroy(id) {
-			Servico.destroy(vm.lista_servicos[id].descricao).then(delservicosSuccessFn, delservicosErrorFn);
+			Servico.destroy(vm.lista_servicos[id].id).then(delservicosSuccessFn, delservicosErrorFn);
 
 		  function delservicosSuccessFn(data, status, headers, config) {
 			activate();
@@ -102,10 +99,8 @@
 			Sistema.submit(vm.descricao).then(sistemasSuccessFn, sistemasErrorFn);
 			
 			function sistemasSuccessFn(data, status, headers, config) {
-				vm.lista_sistemas.unshift({
-				descricao: vm.descricao 
-				});
 				vm.descricao = [];
+				activate();
 				SnackBar.show({ pos: 'bottom-center', text: 'Sistema adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 			  }
 
@@ -114,7 +109,7 @@
 			  }
 		}
 		function destroy(id) {
-		  Sistema.destroy(vm.lista_sistemas[id].descricao).then(delsistemasSuccessFn, delsistemasErrorFn);
+		  Sistema.destroy(vm.lista_sistemas[id].id).then(delsistemasSuccessFn, delsistemasErrorFn);
 
 		  function delsistemasSuccessFn(data, status, headers, config) {
 			activate();
@@ -157,10 +152,8 @@
 			KitDeplecao.submit(vm.descricao).then(kitdeplecaoSuccessFn, kitdeplecaoErrorFn);
 			
 			function kitdeplecaoSuccessFn(data, status, headers, config) {
-				vm.lista_kitdeplecao.unshift({
-				descricao: vm.descricao 
-				});
 				vm.descricao = [];
+				activate();
 				SnackBar.show({ pos: 'bottom-center', text: 'Kit de Depleção adicionado com sucesso!', actionText: 'Ocultar', actionTextColor: '#00FF00'});
 			  }
 
@@ -169,7 +162,7 @@
 			  }
 		}
 		function destroy(id) {
-		  KitDeplecao.destroy(vm.lista_kitdeplecao[id].descricao).then(delkitdeplecaoSuccessFn, delkitdeplecaoErrorFn);
+		  KitDeplecao.destroy(vm.lista_kitdeplecao[id].id).then(delkitdeplecaoSuccessFn, delkitdeplecaoErrorFn);
 
 		  function delkitdeplecaoSuccessFn(data, status, headers, config) {
 			activate();
